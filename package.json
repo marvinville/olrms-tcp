@@ -1,26 +1,25 @@
 {
   "name": "olrms-service-tcp",
+  "version": "1.0.0",
   "description": "OLRMS TCP listener",
-  "version": "0.0.1",
-  "private": true,
-  "license": "Apache-2.0",
-  "author": "MarvinV",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
-  },
+  "author": "marvinville",
+  "type": "module",
   "engines": {
     "node": ">=8.0.0"
   },
+  "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "mocha --exit test/*.test.js"
+    "start": "node -r esm app.js",
+    "test": "mocha -r esm"
   },
   "dependencies": {
-    "express": "^4.16.3"
-  },
-  "devDependencies": {
-    "mocha": "^7.0.0",
-    "supertest": "^4.0.2"
+    "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "eslint": "^7.5.0",
+    "esm": "^3.2.25",
+    "express": "^4.16.3",
+    "md5": "^2.2.1",
+    "mocha": "^8.0.1",
+    "moment": "^2.27.0"
   }
 }

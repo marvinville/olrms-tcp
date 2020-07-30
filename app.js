@@ -1,27 +1,28 @@
 'use strict'
 
-const net = require('net')
+import net from 'net'
+import Olrms from './api/Olrms.js'
 
-const hostname = '127.0.0.1'
-const port = 43552
+const olrms = new Olrms()
+const port = 43556
 
-const app = net.createServer(function(socket) {
-  let remoteAddress = socket.remoteAddress
-  let remotePort = socket.remotePort
+const app = net.createServer((socket) => {
+  const remoteAddress = socket.remoteAddress
+  const remotePort = socket.remotePort
 
   console.log(`CONNECTED: ${remoteAddress}:${remotePort}`)
   socket.setEncoding('utf8')
 
-  socket.on('data', function(data) {
-    console.log(`${data}`)
+  socket.on('data', (data) => {
+    olrms.sendToApi({ data })
   })
 
   socket.write(`Server Reply`)
   socket.pipe(socket)
 })
 
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`)
+app.listen(port, () => {
+  console.log(`Server running at ${port}`)
 })
 
-module.exports = app
+export default app

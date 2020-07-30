@@ -1,0 +1,21 @@
+[Unit]
+Description=OLRMS NodeJS service
+#Requires=After=mysql.service       # Requires the mysql service to run first
+
+[Service]
+ExecStart=/home/olrms-service/.nvm/versions/node/v14.7.0/bin/node /projects/olrms-nodejs/app.js
+# Required on some systems
+#WorkingDirectory=/projects/olrms-nodejs
+Restart=always
+# Restart service after 10 seconds if node service crashes
+RestartSec=10
+# Output to syslog
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodejs-example
+#User=root
+#Group=root
+Environment=NODE_ENV=production PORT=43556
+
+[Install]
+WantedBy=multi-user.target
