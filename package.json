@@ -13,7 +13,7 @@
     "test": "mocha -r esm"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chai": "^4.2.0",
     "eslint": "^7.5.0",
     "esm": "^3.2.25",
